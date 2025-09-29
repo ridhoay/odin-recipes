@@ -1,3 +1,67 @@
 <script>
-  console.log("Hello World")
+    console.log("Hello, World!");
+    
+    const choices = ["scissors", "paper", "rock"];
+
+    function getComputerChoice () {
+        let computerChoice = Math.floor(Math.random() * 3);
+        computerChoice = choices[computerChoice];
+        console.log("Computer choice: " + computerChoice)
+        return computerChoice;
+    }
+
+    function getHumanChoice () {
+        let humanChoice = prompt("scissors, paper, or rock?");
+        humanChoice = humanChoice.toLowerCase();
+        console.log("Human choice: " + humanChoice);
+        return humanChoice;
+    }
+
+    let humanScore = 0
+    let computerScore = 0
+
+    function playround (humanChoice, computerChoice) {
+        if (humanChoice === computerChoice) {
+            return "tie";
+        }    
+        else if (humanChoice === "scissors" && computerChoice === "paper") {
+            humanScore++;
+            return "Human won";
+        }
+        else if (humanChoice === "paper" && computerChoice === "rock") {
+            humanScore++;
+            return "Human won";
+        }
+        else if (humanChoice === "rock" && computerChoice === "scissors") {
+            humanScore++;
+            return "Human won";
+        }
+        else {
+            computerScore++;
+            return "Computer won";
+        }
+    }
+
+    function playGame () {
+        for (let i = 0; i < 5; i++) {
+            const humanSelection = getHumanChoice();
+            const computerSelection = getComputerChoice();
+            console.log(playround(humanSelection, computerSelection));
+        }
+        if (humanScore > computerScore) {
+            console.log("Human: " + humanScore + " Computer: " + computerScore);
+            console.log("You win!");
+        }
+        else if (humanScore < computerScore) {
+            console.log("Human: " + humanScore + " Computer: " + computerScore);
+            console.log("You lose!");
+        }
+        else {
+            console.log("Human :" + humanScore + " Computer: " + computerScore);
+            console.log("Tie!");
+        }
+    }
+
+    playGame();
+
 </script>
