@@ -7,6 +7,14 @@ const clearButton = document.createElement("button");
 clearButton.id = "clear";
 clearButton.textContent = "Clear";
 
+const eraserBtn = document.createElement("button");
+eraserBtn.id = "eraser";
+eraserBtn.textContent = "Erase";
+
+const drawBtn = document.createElement("button");
+drawBtn.id = "draw";
+drawBtn.textContent = "Draw";
+
 createGridBtn.addEventListener("click", () => {
     
     // ask user for grid size
@@ -41,6 +49,34 @@ createGridBtn.addEventListener("click", () => {
     clearButton.addEventListener("click", () => {
         squares.forEach(square => {
             square.style.backgroundColor = "";
+        });
+    });
+
+    // add eraser mode which turns the mouse into an eraser
+    if (document.getElementById("eraser")) {
+        documentBody.removeChild(eraserBtn);
+    }
+    documentBody.appendChild(eraserBtn);
+    
+    eraserBtn.addEventListener("click", () => {
+        squares.forEach(square => {
+            square.addEventListener("mouseover", () => {
+                square.style.backgroundColor = "";
+            });
+        });
+    }); 
+
+    // add draw mode which turns the mouse into a draw
+    if (document.getElementById("draw")) {
+        documentBody.removeChild(drawBtn);
+    }
+    documentBody.appendChild(drawBtn);
+    
+    drawBtn.addEventListener("click", () => {
+        squares.forEach(square => {
+            square.addEventListener("mouseover", () => {
+                square.style.backgroundColor = "red";
+            });
         });
     });
 })
