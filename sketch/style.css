@@ -1,0 +1,28 @@
+
+button {
+    display: block;
+    margin: 20px auto;
+}
+
+.grid-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 800px;  /* Fixed width */
+    height: 600px; /* Fixed height */
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.row {
+    display: flex;
+    flex: 1; /* Each row takes equal height */
+}
+
+.square {
+    border: 1px solid rgb(0, 0, 0);
+    box-sizing: border-box;
+    flex: 1; /* Each square takes equal width */
+    margin: 0px; 
+}
